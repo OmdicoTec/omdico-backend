@@ -1,0 +1,3 @@
+*.sqlite*
+# Ignore seeders-generated JSON files
+seeders/*.json

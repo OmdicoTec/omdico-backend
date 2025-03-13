@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('finance_infos', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            // card number
+            $table->string('card_number', 16)->nullable();
+            // account number
+            // $table->string('account_number', 26)->nullable();
+            // shaba number
+            $table->string('shaba_number', 26)->nullable();
+            // forign key
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('restrict');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('finance_infos');
+    }
+};
