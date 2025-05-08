@@ -49,7 +49,7 @@ class AddressController extends Controller
             // 'user_id' => 'required|integer', // from request
             'postal_code' => 'nullable|integer|digits_between:0,32',
             'name' => 'required|string|max:64',
-            'mobile_number' => 'required|numeric|digits:11',
+            'mobile_number' => 'required',
             'address' => 'required|string|max:255',
             'province_id' => 'required|integer',
         ]);
