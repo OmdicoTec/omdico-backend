@@ -23,6 +23,6 @@ jobs:
           key: ${{ secrets.TEST_SERVER_KEY }}
           port: ${{ secrets.TEST_SERVER_PORT }}
           script: |
-            cd /home/projects/assistant/shopping-assistant-backend
+            cd /home/projects/omdico/omdico-backend
             git pull origin main
             bash .github/workflows/main-deploy.sh
