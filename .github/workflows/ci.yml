@@ -1,0 +1,28 @@
+name: CI Deployment
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  deploy:
+    name: Deploy to Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: SSH into server and deploy
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.TEST_SERVER_HOST }}
+          username: ${{ secrets.TEST_SERVER_USERNAME }}
+          key: ${{ secrets.TEST_SERVER_KEY }}
+          port: ${{ secrets.TEST_SERVER_PORT }}
+          script: |
+            cd /home/projects/assistant/shopping-assistant-backend
+            git pull origin main
+            bash .github/workflows/main-deploy.sh
