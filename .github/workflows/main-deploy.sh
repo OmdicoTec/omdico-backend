@@ -4,6 +4,11 @@ set -e
 # Load .env variables
 export $(xargs < /home/projects/omdico/omdico-backend/.env)
 
+# Setup SSH agent and add SSH private key
+echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+
 # Build containers
 docker-compose build
 
