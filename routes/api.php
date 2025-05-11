@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
+// message from amirmahdi
 Route::group(['prefix' => 'v1'], function () {
     Route::post('/register', [\App\Http\Controllers\Api\v1\AuthController::class, 'register']);
     Route::post('/login', [\App\Http\Controllers\Api\v1\AuthController::class, 'login'])->name('login');
